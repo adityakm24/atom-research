@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MilliJoule on Apple silicon · Atom Research</title>
+  <meta name="description" content="MilliJoule on Apple silicon: faster AI on the Mac you already have, including models bigger than its memory.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@200;300;400&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="energy-page">
+  <canvas class="stars" data-viz="stars" aria-hidden="true"></canvas>
+  <div class="page">
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="Atom Research home">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+          <span>Atom Research</span>
+        </a>
+        <nav class="nav">
+          <a href="discovery-os.html">Discovery OS</a>
+          <a href="millijoule.html" aria-current="page">MilliJoule</a>
+          <a class="hide-sm" href="./#principles">Principles</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="p-hero">
+        <canvas data-viz="experts" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <a class="crumb fade-in" href="millijoule.html">← MilliJoule</a>
+          <h1 class="mega" style="white-space:normal"><span class="line"><span>Apple</span></span><span class="line"><span class="dim">Silicon</span></span></h1>
+          <p class="lede fade-in">Faster AI on the Mac you already have, including models bigger than its memory.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="stats reveal">
+            <span class="plus tl"></span><span class="plus tr"></span><span class="plus bl"></span><span class="plus br"></span>
+            <div class="stat">
+              <div class="big">2<small>×</small></div>
+              <h3>Faster than mlx-lm</h3>
+              <p>Generating text for one conversation.<sup>1</sup></p>
+            </div>
+            <div class="stat">
+              <div class="big">1.5<small>×</small></div>
+              <h3>More throughput</h3>
+              <p>Than vllm-mlx, serving eight users at once.<sup>2</sup></p>
+            </div>
+            <div class="stat">
+              <div class="big">35<small>B</small></div>
+              <h3>Model on a 16 GB Mac</h3>
+              <p>A 20 GB model, running at a usable speed.<sup>3</sup></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label energy" data-scramble>Speed</span>
+            <div>
+              <h2>Faster for one,<br>faster for many</h2>
+              <p>Against the most popular open engines on Mac, running the same model.</p>
+            </div>
+          </div>
+          <div class="chart-pair">
+            <div class="chart reveal d1">
+              <div class="chart-head">
+                <h3>One conversation<sup>1</sup></h3>
+                <span class="unit">words per second*</span>
+              </div>
+              <ul class="bars">
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">44.6</span></li>
+                <li><span class="name">Ollama</span><span class="track"><i style="--w:66.6%"></i></span><span class="val">29.7</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:53.6%"></i></span><span class="val">23.9</span></li>
+                <li><span class="name">mlx-lm</span><span class="track"><i style="--w:48.4%"></i></span><span class="val">21.6</span></li>
+                <li><span class="name">llama.cpp</span><span class="track"><i style="--w:41.5%"></i></span><span class="val">18.5</span></li>
+              </ul>
+            </div>
+            <div class="chart reveal d2">
+              <div class="chart-head">
+                <h3>Many users at once<sup>2</sup></h3>
+                <span class="unit">words per second*, all users</span>
+              </div>
+              <ul class="bars">
+                <li><span class="group">8 users</span></li>
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:84.6%"></i></span><span class="val">68.5</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:55.3%"></i></span><span class="val">44.8</span></li>
+                <li><span class="group">16 users</span></li>
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:92.3%"></i></span><span class="val">74.8</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:55.1%"></i></span><span class="val">44.6</span></li>
+                <li><span class="group">32 users</span></li>
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:99.3%"></i></span><span class="val">80.4</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:86.2%"></i></span><span class="val">69.8</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap split">
+          <div class="reveal">
+            <span class="label energy" data-scramble>Bigger than memory</span>
+            <h2 class="split-title">A 20 GB model on a 16 GB Mac</h2>
+            <p class="big">Big mixture-of-experts models only use a small part of themselves for each word. MilliJoule loads just that part, so models larger than your Mac's memory still run.</p>
+          </div>
+          <div class="chart reveal d1">
+            <div class="chart-head">
+              <h3>Qwen3.6-35B<sup>3</sup></h3>
+              <span class="unit">words per second*</span>
+            </div>
+            <ul class="bars">
+              <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">14.7</span></li>
+              <li><span class="name">llama.cpp</span><span class="track"><i style="--w:14.3%"></i></span><span class="val">2.1</span></li>
+              <li class="na"><span class="name">mlx-lm</span><span class="track"><i></i></span><span class="val">Can't run it</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding:56px 0">
+        <div class="wrap">
+          <ol class="footnotes reveal">
+            <li class="plain">Apple M4 Mac (10-core GPU, 16 GB), macOS 27.3, November 2026. Qwen3.5-9B in 4-bit unless noted, 128 new tokens. Each engine was set up by us: mlx-lm 0.32.2, vllm-mlx 0.6.0, Ollama 0.40.16, llama.cpp build 12359. *Tokens per second; a token is roughly a word.</li>
+            <li>One chat request. MilliJoule, Ollama and vllm-mlx all use speculative decoding with the model's built-in draft layer; MilliJoule's output is identical to standard decoding. The gain depends on how predictable the text is.</li>
+            <li>Many users: 1.5× vllm-mlx at 8 requests, 1.7× at 16 and 1.15× at 32.</li>
+            <li>Qwen3.6-35B-A3B, 20 GB in 4-bit, streamed from the SSD. llama.cpp's best of three settings with experts on the CPU; it runs out of GPU memory by default.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap next reveal">
+          <span class="label energy">Back</span>
+          <a class="big" href="millijoule.html">MilliJoule →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="footer-mega" aria-hidden="true">Atom Research</p>
+        <div class="footer-row">
+          <span>© 2026 Atom Research</span>
+          <nav><a href="./">Home</a><a href="discovery-os.html">Discovery OS</a><a href="millijoule.html">MilliJoule</a></nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>

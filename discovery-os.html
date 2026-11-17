@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Discovery OS · Atom Research</title>
-  <meta name="description" content="Discovery OS: a workbench where AI agents read the literature, plan and run experiments, and report results with evidence.">
+  <meta name="description" content="Discovery OS: an AI research team that reads the literature, runs the experiments and shows its work.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,16 +34,23 @@
         <div class="wrap">
           <span class="label fade-in" data-scramble>01 · Autonomous research</span>
           <h1 class="mega" style="white-space:normal"><span class="line"><span>Discovery</span></span><span class="line"><span class="dim">OS</span></span></h1>
-          <p class="lede fade-in">A workbench where AI agents take a question, read the literature, design and run experiments, and come back with results you can check.</p>
+          <p class="lede fade-in">An AI research team that reads, experiments and shows its work.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <span class="label reveal" data-scramble>The problem</span>
+          <p class="statement reveal d1" style="margin-top:28px">One research question can take <em>weeks</em> of reading, coding and re-running experiments. AI can do the legwork, but its answers are hard to <em>check</em>.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="wrap split">
           <div class="reveal">
-            <span class="label" data-scramble>The idea</span>
-            <p class="big" style="margin-top:24px">Most of research is a loop: read what's known, form a plan, run an experiment, check it honestly, write it up, repeat. Discovery OS hands that loop to a team of agents and keeps a person in charge of where it goes.</p>
-            <p>Every step leaves a trail: the papers read, the scripts written, the logs and the numbers. A separate reviewer and a monitor check the work against the original goal before anything is reported as a result.</p>
+            <span class="label" data-scramble>Our answer</span>
+            <h2 class="split-title">The whole research loop, run by agents</h2>
+            <p class="big">Give Discovery OS a question. Its agents read the papers, plan and run the experiments, check the results and write them up. You steer; they do the work.</p>
           </div>
           <div class="reveal d1">
             <svg class="loop-diagram" viewBox="0 0 520 520" role="img" aria-label="The research loop: question, read, plan, run, check, report">
@@ -67,55 +74,30 @@
 
       <section class="section">
         <div class="wrap">
-          <div class="section-head reveal">
-            <span class="label" data-scramble>Capabilities</span>
-            <div><h2>What it does</h2></div>
+          <div class="story-row reveal">
+            <div class="story-text">
+              <span class="n">01</span>
+              <h3>Start with a question</h3>
+              <p>Ask in plain words. The agents turn it into a plan and work through it step by step.</p>
+            </div>
+            <figure class="shot"><img src="assets/discovery-os-research-plan.png" width="800" height="500" loading="lazy" alt="Discovery OS writing and working through a research plan"></figure>
           </div>
-          <div class="features reveal d1">
-            <div class="feature"><span class="n">01</span><h3>Reads papers in full</h3><p>Agents pull from arXiv, Semantic Scholar, PubMed and the web, and read the whole paper, not just the abstract.</p></div>
-            <div class="feature"><span class="n">02</span><h3>Runs real experiments</h3><p>Code runs in an isolated sandbox. Every metric links back to the script and the logs that produced it.</p></div>
-            <div class="feature"><span class="n">03</span><h3>Steer mid-flight</h3><p>Redirect a running investigation without restarting it. Progress charts show what was tried and what improved.</p></div>
-            <div class="feature"><span class="n">04</span><h3>Memory across projects</h3><p>Lessons from past runs carry over to new chats and projects, so agents don't repeat old mistakes.</p></div>
-            <div class="feature"><span class="n">05</span><h3>Guardrails and budgets</h3><p>Limits on experiments, time and spend, plus checks for test-data leaks and results that look too good to be true.</p></div>
-            <div class="feature"><span class="n">06</span><h3>Measured on held-out tasks</h3><p>A built-in suite of research tasks scores every change to the agent harness before it ships.</p></div>
+          <div class="story-row flip reveal">
+            <div class="story-text">
+              <span class="n">02</span>
+              <h3>Watch the evidence build</h3>
+              <p>Every experiment is run, scored and charted. Each number links back to the code that produced it.</p>
+            </div>
+            <figure class="shot"><img src="assets/discovery-os-experiments.png" width="800" height="500" loading="lazy" alt="Discovery OS charting experiment results and ranking runs"></figure>
           </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap">
-          <div class="section-head reveal">
-            <span class="label" data-scramble>In the app</span>
-            <div><h2>Screenshots</h2></div>
+          <div class="story-row reveal">
+            <div class="story-text">
+              <span class="n">03</span>
+              <h3>Stay in control</h3>
+              <p>Set limits on time and spend, and redirect the work at any point. A separate reviewer checks results before they reach you.</p>
+            </div>
+            <figure class="shot"><img src="assets/discovery-os-project-limits.png" width="800" height="500" loading="lazy" alt="Setting a project's limits on experiments, time and spend"></figure>
           </div>
-          <div class="gallery">
-            <figure class="shot wide reveal">
-              <img src="assets/discovery-os-experiments.png" width="800" height="500" loading="lazy" alt="Discovery OS comparing models on the Iris dataset, with the Experiments panel showing a score chart and run leaderboard">
-              <figcaption>Comparing models on Iris. The Experiments panel charts each run's score and keeps a leaderboard, and the agent explains its result and what the reviewer checked.</figcaption>
-            </figure>
-            <figure class="shot reveal">
-              <img src="assets/discovery-os-research-plan.png" width="800" height="500" loading="lazy" alt="A paper reproduction plan with completed steps and a monitor agent check">
-              <figcaption>Reproducing a paper: the agent writes a plan, ticks off each step, and a monitor checks the work stays on the user's goal.</figcaption>
-            </figure>
-            <figure class="shot reveal d1">
-              <img src="assets/discovery-os-project-limits.png" width="800" height="500" loading="lazy" alt="Create New Project dialog with limits for experiments, time, spend and training time">
-              <figcaption>Each project sets its own limits on experiments, time, spend and training time per run, and the app enforces them.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap">
-          <div class="section-head reveal">
-            <span class="label" data-scramble>Open questions</span>
-            <div><h2>What we're<br>still figuring out</h2></div>
-          </div>
-          <ul class="rules reveal d1">
-            <li><span class="n">Q1</span><div><strong>How do you stop an agent fooling itself?</strong><span>Agents drift toward easy benchmarks, convenient metrics and post-hoc picks. We're testing which checks actually catch this.</span></div></li>
-            <li><span class="n">Q2</span><div><strong>What should carry over between projects?</strong><span>Memory helps until it carries stale or wrong lessons. We're working out what to keep, what to forget and when.</span></div></li>
-            <li><span class="n">Q3</span><div><strong>How should a person steer a long run?</strong><span>Long investigations need a human in the loop without the human becoming the bottleneck.</span></div></li>
-          </ul>
         </div>
       </section>
 

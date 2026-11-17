@@ -351,6 +351,72 @@
     });
   }
 
+  /* ---------- expert streaming (millijoule mlx hero) ---------- */
+  // A dot-matrix bank of experts on the left; each step a few are routed,
+  // light up, and stream to the chip column on the right. Illustrative only.
+  function expertStream(canvas) {
+    const rand = rng(23);
+    let grid = [], chipX = 0, particles = [], lastStep = -1;
+    animate(canvas, (ctx, w, h, t) => {
+      const STEP_S = 0.55;
+      const step = Math.floor(t / STEP_S);
+      if (step !== lastStep && grid.length) {
+        lastStep = step;
+        for (let k = 0; k < 4; k++) {
+          const g = grid[(rand() * grid.length) | 0];
+          g.lit = 1;
+          for (let p = 0; p < 7; p++) particles.push({ x: g.x + (rand() - 0.5) * 10, y: g.y + (rand() - 0.5) * 10, ty: h * (0.25 + rand() * 0.5), v: 0.5 + rand() * 0.6, life: 1 });
+        }
+      }
+      for (const g of grid) {
+        g.lit *= 0.94;
+        const a = 0.16 + 0.84 * g.lit;
+        const s = 2 + g.lit * 2.5;
+        ctx.fillStyle = g.lit > 0.05 ? rgba(ENERGY, a) : "rgba(74,81,117,0.35)";
+        ctx.fillRect(g.x - s / 2, g.y - s / 2, s, s);
+      }
+      // chip column
+      ctx.fillStyle = "rgba(142,162,255,0.10)";
+      ctx.fillRect(chipX - 26, h * 0.2, 52, h * 0.6);
+      ctx.strokeStyle = "rgba(142,162,255,0.35)";
+      ctx.strokeRect(chipX - 26 + 0.5, h * 0.2 + 0.5, 52, h * 0.6);
+      for (let y = h * 0.2 + 8; y < h * 0.8 - 4; y += 9) {
+        ctx.fillStyle = "rgba(142,162,255,0.22)";
+        ctx.fillRect(chipX - 18, y, 36, 1);
+      }
+      // particles travel along a curve into the chip
+      particles = particles.filter((p) => p.life > 0);
+      for (const p of particles) {
+        const dx = chipX - p.x;
+        p.x += Math.max(1.2, dx * 0.018) * p.v * 2;
+        p.y += (p.ty - p.y) * 0.03;
+        if (p.x >= chipX - 20) p.life -= 0.08;
+        const mix = Math.min(1, Math.max(0, 1 - dx / (w * 0.6)));
+        const col = [ENERGY[0] + (ACCENT[0] - ENERGY[0]) * mix, ENERGY[1] + (ACCENT[1] - ENERGY[1]) * mix, ENERGY[2] + (ACCENT[2] - ENERGY[2]) * mix];
+        ctx.fillStyle = rgba(col, 0.85 * p.life);
+        ctx.fillRect(p.x, p.y, 2.2, 2.2);
+      }
+      // tokens leaving the chip
+      for (let i = 0; i < 18; i++) {
+        const u = ((t * 0.35 + i / 18) % 1);
+        const x = chipX + 34 + u * (w - chipX - 34);
+        const y = h * 0.5 + Math.sin(i * 1.7) * h * 0.18;
+        ctx.fillStyle = rgba(ACCENT, 0.7 * (1 - u));
+        ctx.fillRect(x, y, 5, 5);
+      }
+    }, {
+      onResize(w, h) {
+        grid = [];
+        const STEP = w < 520 ? 12 : 16;
+        const left = w < 760 ? w * 0.06 : w * 0.38, right = w < 760 ? w * 0.6 : w * 0.72;
+        chipX = w < 760 ? w * 0.75 : w * 0.82;
+        for (let x = left; x < right; x += STEP)
+          for (let y = h * 0.14; y < h * 0.86; y += STEP) grid.push({ x, y, lit: 0 });
+        particles = [];
+      },
+    });
+  }
+
   /* ---------- text scramble for mono labels ---------- */
   const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#*+/<>";
   function scramble(el) {
@@ -373,7 +439,7 @@
 
   /* ---------- wire up ---------- */
   document.querySelectorAll("canvas[data-viz]").forEach((c) => {
-    ({ stars: starfield, atom, tree: searchTree, power: powerTrace })[c.dataset.viz]?.(c);
+    ({ stars: starfield, atom, tree: searchTree, power: powerTrace, experts: expertStream })[c.dataset.viz]?.(c);
   });
 
   const io = new IntersectionObserver((entries) => {

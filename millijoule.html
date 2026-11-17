@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MilliJoule · Atom Research</title>
-  <meta name="description" content="MilliJoule: an LLM inference engine that treats energy per output token as the main metric.">
+  <meta name="description" content="MilliJoule: an AI inference engine built to use as little energy as possible for every answer, on NVIDIA, Apple and AMD chips.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,21 +34,60 @@
         <div class="wrap">
           <span class="label energy fade-in" data-scramble>02 · Energy-first inference</span>
           <h1 class="mega" style="white-space:normal"><span class="line"><span>Milli</span></span><span class="line"><span class="dim">Joule</span></span></h1>
-          <p class="lede fade-in">An LLM inference engine that treats energy as the main metric: as few joules per output token as possible on modern GPUs.</p>
+          <p class="lede fade-in">An AI inference engine built around one number: the energy it takes to produce each word.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <span class="label energy reveal" data-scramble>The problem</span>
+          <p class="statement reveal d1" style="margin-top:28px">Every AI answer costs <span class="en">energy</span>. As AI use grows, so does the bill, yet today's engines are tuned for speed, not energy.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="wrap split">
           <div class="reveal">
-            <span class="label energy" data-scramble>The idea</span>
-            <p class="big" style="margin-top:24px">Inference engines are tuned for speed and cost per hour. As AI use grows, the number that will matter more is energy: how many joules it takes to produce each token.</p>
-            <p>MilliJoule starts from that number. Every design choice, from how requests are batched to which GPU kernels run, is judged by joules per output token at a fixed latency limit, measured on the GPU itself.</p>
+            <span class="label energy" data-scramble>Our answer</span>
+            <h2 class="split-title">Start from the joules</h2>
+            <p class="big">MilliJoule judges every design choice by the energy per word it produces, measured on the chip itself, at the speed users expect.</p>
           </div>
           <div class="viz-box reveal d1">
             <span class="label energy">Power trace</span>
             <canvas data-viz="power" aria-hidden="true"></canvas>
-            <span class="caption">Illustration · not measured data</span>
+            <span class="caption">Illustration</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label energy" data-scramble>Platforms</span>
+            <div>
+              <h2>Runs where<br>AI runs</h2>
+              <p>One engine, tuned for each chip family instead of one lowest-common-denominator path.</p>
+            </div>
+          </div>
+          <div class="platforms reveal d1">
+            <div class="platform">
+              <span class="chip">CUDA</span>
+              <h3>NVIDIA GPUs</h3>
+              <p>Built for Blackwell-class data-centre GPUs and newer.</p>
+              <span class="status">In development</span>
+            </div>
+            <a class="platform live" href="millijoule-mlx.html">
+              <span class="chip">MLX</span>
+              <h3>Apple silicon</h3>
+              <p>Runs on Macs today, with first results against the leading open engines.</p>
+              <span class="status">See the results <span class="arrow">→</span></span>
+            </a>
+            <div class="platform">
+              <span class="chip">ROCm</span>
+              <h3>AMD GPUs</h3>
+              <p>The same engine on AMD Instinct accelerators.</p>
+              <span class="status">Coming soon</span>
+            </div>
           </div>
         </div>
       </section>
@@ -59,16 +98,16 @@
             <span class="label energy" data-scramble>Architecture</span>
             <div>
               <h2>Where the<br>joules go</h2>
-              <p>Energy is spent at every stage of serving a request, so the engine is built and measured as one system.</p>
+              <p>Energy is spent at every stage of serving a request, so we build and measure the engine as one system.</p>
             </div>
           </div>
           <div class="pipeline reveal d1">
             <div class="flow"></div>
-            <div class="stage"><span class="n">01</span><h3>Scheduler</h3><p>Continuous batching keeps the GPU busy, with prompt processing mixed into decode steps.</p></div>
-            <div class="stage"><span class="n">02</span><h3>Memory</h3><p>A paged KV cache and shared prefix cache avoid recomputing work that has been done before.</p></div>
-            <div class="stage"><span class="n">03</span><h3>Kernels</h3><p>GPU kernels and execution graphs chosen for energy, starting with mixture-of-experts models.</p></div>
-            <div class="stage"><span class="n">04</span><h3>Hardware</h3><p>Built for Blackwell-class GPUs and newer, using what that hardware offers rather than the lowest common denominator.</p></div>
-            <div class="stage"><span class="n">05</span><h3>Meter</h3><p>The GPU's own energy counter is read for every benchmark, and each number says what was measured.</p></div>
+            <div class="stage"><span class="n">01</span><h3>Scheduler</h3><p>Keeps the chip busy by serving many requests together.</p></div>
+            <div class="stage"><span class="n">02</span><h3>Memory</h3><p>Reuses work already done instead of computing it again.</p></div>
+            <div class="stage"><span class="n">03</span><h3>Kernels</h3><p>The core maths, chosen for energy, starting with mixture-of-experts models.</p></div>
+            <div class="stage"><span class="n">04</span><h3>Hardware</h3><p>Uses what each chip offers rather than the lowest common denominator.</p></div>
+            <div class="stage"><span class="n">05</span><h3>Meter</h3><p>Reads the chip's own energy counter on every benchmark.</p></div>
           </div>
         </div>
       </section>
@@ -80,10 +119,10 @@
             <div><h2>How we<br>measure</h2></div>
           </div>
           <ul class="rules reveal d1">
-            <li><span class="n">M1</span><div><strong>Measure on the hardware</strong><span>Energy comes from the GPU board's own counter, not from estimates. Wall power is quoted only when we can measure it.</span></div></li>
-            <li><span class="n">M2</span><div><strong>Respect the noise</strong><span>The counter is accurate to roughly ±5%, so a change only counts if it moves joules per token by more than that and a repeat run agrees.</span></div></li>
-            <li><span class="n">M3</span><div><strong>Never quote a number alone</strong><span>Every published figure comes with its latency limit, number format, GPU and measurement boundary, so it can't be compared unfairly.</span></div></li>
-            <li><span class="n">M4</span><div><strong>Count idle power</strong><span>Power drawn with the model loaded and no traffic is recorded, because a real server spends time waiting too.</span></div></li>
+            <li><span class="n">M1</span><div><strong>Measure on the hardware</strong><span>Energy comes from the chip's own counter, not from estimates.</span></div></li>
+            <li><span class="n">M2</span><div><strong>Respect the noise</strong><span>A gain only counts if it is bigger than the measurement error and holds up on a repeat run.</span></div></li>
+            <li><span class="n">M3</span><div><strong>Never quote a number alone</strong><span>Every figure comes with its chip, model and speed target, so it can't be compared unfairly.</span></div></li>
+            <li><span class="n">M4</span><div><strong>Count idle power</strong><span>A real server spends time waiting too, so we include it.</span></div></li>
           </ul>
         </div>
       </section>
