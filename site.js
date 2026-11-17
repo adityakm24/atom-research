@@ -359,7 +359,10 @@
     if (REDUCE) return;
     let frame = 0;
     const total = 22;
+    // animation frames pause in background tabs; always land on the real text
+    setTimeout(() => { frame = total; el.textContent = final; }, 1200);
     const tick = () => {
+      if (frame >= total) { el.textContent = final; return; }
       frame++;
       const done = Math.floor((frame / total) * final.length);
       el.textContent = final.split("").map((ch, i) => (i < done || ch === " " ? ch : GLYPHS[(Math.random() * GLYPHS.length) | 0])).join("");
