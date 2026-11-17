@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atom Research</title>
+  <meta name="description" content="Atom Research is a deep research lab working on autonomous research agents and energy-efficient AI inference.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+        Atom Research
+      </a>
+      <nav class="nav">
+        <a href="#research">Research</a>
+        <a href="#about">How we work</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Deep research lab</p>
+        <h1>Machines that do science, efficiently.</h1>
+        <p class="lede">Atom Research works on autonomous research agents and the inference infrastructure that runs them. We want each experiment to need less human effort, and each answer to use less energy.</p>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What we're working on</h2>
+          <p>Two directions with one thesis: research gets faster when the loop from question to result is automated and cheap to run.</p>
+        </div>
+        <div class="products">
+          <article class="card">
+            <span class="tag">Autonomous research</span>
+            <h3>Discovery OS</h3>
+            <p>Can AI agents do real research? We're building a workbench where agents read the literature in full, plan experiments, run them in a sandbox and report results that trace back to the code and data behind them.</p>
+            <p>Open questions we're working on: how to stop agents fooling themselves, how lessons from one project should carry over to the next, and how a person can steer a long investigation without restarting it.</p>
+          </article>
+          <article class="card energy">
+            <span class="tag">Energy-first inference</span>
+            <h3>MilliJoule</h3>
+            <p>What does LLM inference look like if energy is the main metric? We're building an inference engine that aims for as few joules per output token as possible on modern GPUs.</p>
+            <p>The work spans the scheduler, memory management and GPU kernels, all measured with real hardware energy counters rather than estimates.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How we work</h2>
+        </div>
+        <div class="points">
+          <div class="point">
+            <h3>Evidence over claims</h3>
+            <p>Every result traces back to the code, data and run that produced it. Agents have to show their work too.</p>
+          </div>
+          <div class="point">
+            <h3>Measure what matters</h3>
+            <p>We benchmark against held-out tasks and real hardware counters, not proxies that are easy to game.</p>
+          </div>
+          <div class="point">
+            <h3>Efficiency is a feature</h3>
+            <p>Compute and energy cost are first-class numbers we track and report, not something left for later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Atom Research</span>
+    </div>
+  </footer>
+</body>
+</html>
