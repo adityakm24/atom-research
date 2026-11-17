@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discovery OS · Atom Research</title>
+  <meta name="description" content="Discovery OS: a workbench where AI agents read the literature, plan and run experiments, and report results with evidence.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@200;300;400&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas class="stars" data-viz="stars" aria-hidden="true"></canvas>
+  <div class="page">
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="Atom Research home">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+          <span>Atom Research</span>
+        </a>
+        <nav class="nav">
+          <a href="discovery-os.html" aria-current="page">Discovery OS</a>
+          <a href="millijoule.html">MilliJoule</a>
+          <a class="hide-sm" href="./#principles">Principles</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="p-hero">
+        <canvas data-viz="tree" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <span class="label fade-in" data-scramble>01 · Autonomous research</span>
+          <h1 class="mega" style="white-space:normal"><span class="line"><span>Discovery</span></span><span class="line"><span class="dim">OS</span></span></h1>
+          <p class="lede fade-in">A workbench where AI agents take a question, read the literature, design and run experiments, and come back with results you can check.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap split">
+          <div class="reveal">
+            <span class="label" data-scramble>The idea</span>
+            <p class="big" style="margin-top:24px">Most of research is a loop: read what's known, form a plan, run an experiment, check it honestly, write it up, repeat. Discovery OS hands that loop to a team of agents and keeps a person in charge of where it goes.</p>
+            <p>Every step leaves a trail: the papers read, the scripts written, the logs and the numbers. A separate reviewer and a monitor check the work against the original goal before anything is reported as a result.</p>
+          </div>
+          <div class="reveal d1">
+            <svg class="loop-diagram" viewBox="0 0 520 520" role="img" aria-label="The research loop: question, read, plan, run, check, report">
+              <path id="loop-path" class="ring" d="M260,60 A200,200 0 0,1 260,460 A200,200 0 0,1 260,60"/>
+              <circle class="core" cx="260" cy="260" r="62" opacity=".9"/>
+              <circle cx="260" cy="260" r="86" fill="none" stroke="rgba(142,162,255,.25)" stroke-dasharray="1 5"/>
+              <text class="core-text" x="260" y="262">AGENTS</text>
+              <g class="node"><rect x="208" y="43" width="104" height="34"/><text x="260" y="61">QUESTION</text></g>
+              <g class="node"><rect x="381" y="143" width="104" height="34"/><text x="433" y="161">READ</text></g>
+              <g class="node"><rect x="381" y="343" width="104" height="34"/><text x="433" y="361">PLAN</text></g>
+              <g class="node"><rect x="208" y="443" width="104" height="34"/><text x="260" y="461">RUN</text></g>
+              <g class="node"><rect x="35" y="343" width="104" height="34"/><text x="87" y="361">CHECK</text></g>
+              <g class="node"><rect x="35" y="143" width="104" height="34"/><text x="87" y="161">REPORT</text></g>
+              <rect class="comet" x="-5" y="-5" width="10" height="10">
+                <animateMotion dur="9s" repeatCount="indefinite"><mpath href="#loop-path"/></animateMotion>
+              </rect>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label" data-scramble>Capabilities</span>
+            <div><h2>What it does</h2></div>
+          </div>
+          <div class="features reveal d1">
+            <div class="feature"><span class="n">01</span><h3>Reads papers in full</h3><p>Agents pull from arXiv, Semantic Scholar, PubMed and the web, and read the whole paper, not just the abstract.</p></div>
+            <div class="feature"><span class="n">02</span><h3>Runs real experiments</h3><p>Code runs in an isolated sandbox. Every metric links back to the script and the logs that produced it.</p></div>
+            <div class="feature"><span class="n">03</span><h3>Steer mid-flight</h3><p>Redirect a running investigation without restarting it. Progress charts show what was tried and what improved.</p></div>
+            <div class="feature"><span class="n">04</span><h3>Memory across projects</h3><p>Lessons from past runs carry over to new chats and projects, so agents don't repeat old mistakes.</p></div>
+            <div class="feature"><span class="n">05</span><h3>Guardrails and budgets</h3><p>Limits on experiments, time and spend, plus checks for test-data leaks and results that look too good to be true.</p></div>
+            <div class="feature"><span class="n">06</span><h3>Measured on held-out tasks</h3><p>A built-in suite of research tasks scores every change to the agent harness before it ships.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label" data-scramble>In the app</span>
+            <div><h2>Screenshots</h2></div>
+          </div>
+          <div class="gallery">
+            <figure class="shot wide reveal">
+              <img src="assets/discovery-os-experiments.png" width="800" height="500" loading="lazy" alt="Discovery OS comparing models on the Iris dataset, with the Experiments panel showing a score chart and run leaderboard">
+              <figcaption>Comparing models on Iris. The Experiments panel charts each run's score and keeps a leaderboard, and the agent explains its result and what the reviewer checked.</figcaption>
+            </figure>
+            <figure class="shot reveal">
+              <img src="assets/discovery-os-research-plan.png" width="800" height="500" loading="lazy" alt="A paper reproduction plan with completed steps and a monitor agent check">
+              <figcaption>Reproducing a paper: the agent writes a plan, ticks off each step, and a monitor checks the work stays on the user's goal.</figcaption>
+            </figure>
+            <figure class="shot reveal d1">
+              <img src="assets/discovery-os-project-limits.png" width="800" height="500" loading="lazy" alt="Create New Project dialog with limits for experiments, time, spend and training time">
+              <figcaption>Each project sets its own limits on experiments, time, spend and training time per run, and the app enforces them.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label" data-scramble>Open questions</span>
+            <div><h2>What we're<br>still figuring out</h2></div>
+          </div>
+          <ul class="rules reveal d1">
+            <li><span class="n">Q1</span><div><strong>How do you stop an agent fooling itself?</strong><span>Agents drift toward easy benchmarks, convenient metrics and post-hoc picks. We're testing which checks actually catch this.</span></div></li>
+            <li><span class="n">Q2</span><div><strong>What should carry over between projects?</strong><span>Memory helps until it carries stale or wrong lessons. We're working out what to keep, what to forget and when.</span></div></li>
+            <li><span class="n">Q3</span><div><strong>How should a person steer a long run?</strong><span>Long investigations need a human in the loop without the human becoming the bottleneck.</span></div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap next reveal">
+          <span class="label energy">Next · 02</span>
+          <a class="big" href="millijoule.html">MilliJoule →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="footer-mega" aria-hidden="true">Atom Research</p>
+        <div class="footer-row">
+          <span>© 2026 Atom Research</span>
+          <nav><a href="./">Home</a><a href="discovery-os.html">Discovery OS</a><a href="millijoule.html">MilliJoule</a></nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>

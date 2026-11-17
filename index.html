@@ -5,85 +5,143 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Atom Research</title>
   <meta name="description" content="Atom Research is a deep research lab working on autonomous research agents and energy-efficient AI inference.">
+  <meta property="og:title" content="Atom Research">
+  <meta property="og:description" content="A deep research lab building machines that do science, efficiently.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@200;300;400&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="./">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
-        Atom Research
-      </a>
-      <nav class="nav">
-        <a href="#research">Research</a>
-        <a href="#about">How we work</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
+  <canvas class="stars" data-viz="stars" aria-hidden="true"></canvas>
+  <div class="page">
+    <header class="site-header">
       <div class="wrap">
-        <p class="eyebrow">Deep research lab</p>
-        <h1>Machines that do science, efficiently.</h1>
-        <p class="lede">Atom Research works on autonomous research agents and the inference infrastructure that runs them. We want each experiment to need less human effort, and each answer to use less energy.</p>
+        <a class="brand" href="./" aria-label="Atom Research home">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/></svg>
+          <span>Atom Research</span>
+        </a>
+        <nav class="nav">
+          <a href="discovery-os.html">Discovery OS</a>
+          <a href="millijoule.html">MilliJoule</a>
+          <a class="hide-sm" href="#principles">Principles</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section class="section" id="research">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>What we're working on</h2>
-          <p>Two directions with one thesis: research gets faster when the loop from question to result is automated and cheap to run.</p>
-        </div>
-        <div class="products">
-          <article class="card">
-            <span class="tag">Autonomous research</span>
-            <h3>Discovery OS</h3>
-            <p>Can AI agents do real research? We're building a workbench where agents read the literature in full, plan experiments, run them in a sandbox and report results that trace back to the code and data behind them.</p>
-            <p>Open questions we're working on: how to stop agents fooling themselves, how lessons from one project should carry over to the next, and how a person can steer a long investigation without restarting it.</p>
-          </article>
-          <article class="card energy">
-            <span class="tag">Energy-first inference</span>
-            <h3>MilliJoule</h3>
-            <p>What does LLM inference look like if energy is the main metric? We're building an inference engine that aims for as few joules per output token as possible on modern GPUs.</p>
-            <p>The work spans the scheduler, memory management and GPU kernels, all measured with real hardware energy counters rather than estimates.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>How we work</h2>
-        </div>
-        <div class="points">
-          <div class="point">
-            <h3>Evidence over claims</h3>
-            <p>Every result traces back to the code, data and run that produced it. Agents have to show their work too.</p>
+    <main>
+      <section class="hero">
+        <canvas class="hero-canvas" data-viz="atom" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <div class="hero-top fade-in">
+            <span class="label" data-scramble>Deep research lab</span>
+            <span class="label" data-scramble>Est. 2026</span>
           </div>
-          <div class="point">
-            <h3>Measure what matters</h3>
-            <p>We benchmark against held-out tasks and real hardware counters, not proxies that are easy to game.</p>
+          <div>
+          <h1 class="mega">
+            <span class="line"><span>Atom <span class="dim">Research</span></span></span>
+          </h1>
+          <div class="hero-foot fade-in">
+            <p>We build machines that do science, efficiently: agents that read, plan and run experiments on their own, and the inference engines that let them think for less energy.</p>
+            <div class="btns">
+              <a class="btn solid" href="#research">Our research <span class="arrow">→</span></a>
+              <a class="btn" href="#principles">Principles</a>
+            </div>
           </div>
-          <div class="point">
-            <h3>Efficiency is a feature</h3>
-            <p>Compute and energy cost are first-class numbers we track and report, not something left for later.</p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="scroll-cue" aria-hidden="true"></div>
+      </section>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <span>© 2026 Atom Research</span>
-    </div>
-  </footer>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Autonomous research<i>✦</i></span><span>Energy-first inference<i>✦</i></span><span>Evidence over claims<i>✦</i></span><span>Joules per token<i>✦</i></span><span>Agents that show their work<i>✦</i></span><span>Measure what matters<i>✦</i></span>
+          <span>Autonomous research<i>✦</i></span><span>Energy-first inference<i>✦</i></span><span>Evidence over claims<i>✦</i></span><span>Joules per token<i>✦</i></span><span>Agents that show their work<i>✦</i></span><span>Measure what matters<i>✦</i></span>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="wrap">
+          <span class="label reveal" data-scramble>Mission</span>
+          <p class="statement reveal d1" style="margin-top:28px">Research should run at the speed of <em>curiosity</em>, and cost no more <span class="en">energy</span> than the answer is worth.</p>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label" data-scramble>Research</span>
+            <div>
+              <h2>What we're<br>working on</h2>
+              <p>Two directions with one thesis: research gets faster when the loop from question to result is automated and cheap to run.</p>
+            </div>
+          </div>
+          <div class="panels reveal d1">
+            <span class="plus tl"></span><span class="plus tr"></span><span class="plus bl"></span><span class="plus br"></span>
+            <a class="panel" href="discovery-os.html">
+              <div class="viz">
+                <span class="label">01 · Autonomous research</span>
+                <canvas data-viz="tree" aria-hidden="true"></canvas>
+              </div>
+              <div class="body">
+                <h3>Discovery OS</h3>
+                <p>Can AI agents do real research? A workbench where agents read the literature in full, plan experiments, run them in a sandbox and report results that trace back to the code and data behind them.</p>
+                <span class="go">Read more <span class="arrow">→</span></span>
+              </div>
+            </a>
+            <a class="panel energy" href="millijoule.html">
+              <div class="viz">
+                <span class="label energy">02 · Energy-first inference</span>
+                <canvas data-viz="power" aria-hidden="true"></canvas>
+              </div>
+              <div class="body">
+                <h3>MilliJoule</h3>
+                <p>What does LLM inference look like if energy is the main metric? An engine that aims for as few joules per output token as possible on modern GPUs, measured with real hardware counters.</p>
+                <span class="go">Read more <span class="arrow">→</span></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="principles">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label" data-scramble>Principles</span>
+            <div><h2>How we work</h2></div>
+          </div>
+          <div class="principles">
+            <div class="principle reveal">
+              <span class="n">01</span>
+              <h3>Evidence over claims</h3>
+              <p>Every result traces back to the code, data and run that produced it. Agents have to show their work too.</p>
+            </div>
+            <div class="principle reveal d1">
+              <span class="n">02</span>
+              <h3>Measure what matters</h3>
+              <p>We benchmark against held-out tasks and real hardware counters, not proxies that are easy to game.</p>
+            </div>
+            <div class="principle reveal d2">
+              <span class="n">03</span>
+              <h3>Efficiency is a feature</h3>
+              <p>Compute and energy cost are first-class numbers we track and report, not something left for later.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p class="footer-mega" aria-hidden="true">Atom Research</p>
+        <div class="footer-row">
+          <span>© 2026 Atom Research</span>
+          <nav><a href="discovery-os.html">Discovery OS</a><a href="millijoule.html">MilliJoule</a><a href="#principles">Principles</a></nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
 </body>
 </html>
