@@ -73,8 +73,8 @@
             <div class="platform">
               <span class="chip">CUDA</span>
               <h3>NVIDIA GPUs</h3>
-              <p>Built for Blackwell-class data-centre GPUs and newer.</p>
-              <span class="status">In development</span>
+              <p>Planned for Blackwell-class data-centre GPUs and newer.</p>
+              <span class="status">Planned</span>
             </div>
             <a class="platform live" href="millijoule-mlx.html">
               <span class="chip">MLX</span>
@@ -86,7 +86,7 @@
               <span class="chip">ROCm</span>
               <h3>AMD GPUs</h3>
               <p>The same engine on AMD Instinct accelerators.</p>
-              <span class="status">Coming soon</span>
+              <span class="status">Planned</span>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@
             <div class="stage"><span class="n">02</span><h3>Memory</h3><p>Reuses work already done instead of computing it again.</p></div>
             <div class="stage"><span class="n">03</span><h3>Kernels</h3><p>The core maths, chosen for energy, starting with mixture-of-experts models.</p></div>
             <div class="stage"><span class="n">04</span><h3>Hardware</h3><p>Uses what each chip offers rather than the lowest common denominator.</p></div>
-            <div class="stage"><span class="n">05</span><h3>Meter</h3><p>Reads the chip's own energy counter on every benchmark.</p></div>
+            <div class="stage"><span class="n">05</span><h3>Meter</h3><p>Reads the chip's own energy counters on our benchmarks.</p></div>
           </div>
         </div>
       </section>
@@ -119,7 +119,7 @@
             <div><h2>How we<br>measure</h2></div>
           </div>
           <ul class="rules reveal d1">
-            <li><span class="n">M1</span><div><strong>Measure on the hardware</strong><span>Energy comes from the chip's own counter, not from estimates.</span></div></li>
+            <li><span class="n">M1</span><div><strong>Measure on the hardware</strong><span>Energy comes from the chip's own power counters.</span></div></li>
             <li><span class="n">M2</span><div><strong>Respect the noise</strong><span>A gain only counts if it is bigger than the measurement error and holds up on a repeat run.</span></div></li>
             <li><span class="n">M3</span><div><strong>Never quote a number alone</strong><span>Every figure comes with its chip, model and speed target, so it can't be compared unfairly.</span></div></li>
             <li><span class="n">M4</span><div><strong>Count idle power</strong><span>A real server spends time waiting too, so we include it.</span></div></li>
