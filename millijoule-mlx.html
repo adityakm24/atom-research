@@ -53,9 +53,9 @@
               <p>Than vllm-mlx, serving eight users at once.<sup>2</sup></p>
             </div>
             <div class="stat">
-              <div class="big">35<small>B</small></div>
-              <h3>Model on a 16 GB Mac</h3>
-              <p>A 20 GB model, running at a usable speed.<sup>3</sup></p>
+              <div class="big">6.8<small>×</small></div>
+              <h3>Faster than llama.cpp</h3>
+              <p>On a 35B model bigger than the Mac's memory.<sup>3</sup></p>
             </div>
           </div>
         </div>
@@ -118,10 +118,66 @@
               <span class="unit">words per second*</span>
             </div>
             <ul class="bars">
-              <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">14.7</span></li>
-              <li><span class="name">llama.cpp</span><span class="track"><i style="--w:14.3%"></i></span><span class="val">2.1</span></li>
+              <li><span class="group">Writing the answer</span></li>
+              <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">21.7</span></li>
+              <li><span class="name">llama.cpp</span><span class="track"><i style="--w:14.7%"></i></span><span class="val">3.2</span></li>
+              <li><span class="group">Reading the prompt</span></li>
+              <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">277</span></li>
+              <li><span class="name">llama.cpp</span><span class="track"><i style="--w:4.7%"></i></span><span class="val">13.0</span></li>
               <li class="na"><span class="name">mlx-lm</span><span class="track"><i></i></span><span class="val">Can't run it</span></li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <span class="label energy" data-scramble>More models</span>
+            <div>
+              <h2>Fastest on long<br>conversations</h2>
+              <p>One engine for mixture-of-experts models from OpenAI, DeepSeek, Qwen and AllenAI. On long conversations it was the fastest Mac engine we tested on each of these.</p>
+            </div>
+          </div>
+          <div class="chart-trio">
+            <div class="chart reveal d1">
+              <div class="chart-head">
+                <h3>gpt-oss-20b<sup>4</sup></h3>
+                <span class="unit">words per second*</span>
+              </div>
+              <ul class="bars">
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">38.3</span></li>
+                <li><span class="name">llama.cpp</span><span class="track"><i style="--w:91.5%"></i></span><span class="val">35.1</span></li>
+                <li><span class="name">Ollama</span><span class="track"><i style="--w:89.4%"></i></span><span class="val">34.3</span></li>
+                <li><span class="name">LM Studio</span><span class="track"><i style="--w:87%"></i></span><span class="val">33.3</span></li>
+              </ul>
+            </div>
+            <div class="chart reveal d2">
+              <div class="chart-head">
+                <h3>DeepSeek-V2-Lite<sup>4</sup></h3>
+                <span class="unit">words per second*</span>
+              </div>
+              <ul class="bars">
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">52.2</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:95%"></i></span><span class="val">49.6</span></li>
+                <li><span class="name">llama.cpp</span><span class="track"><i style="--w:78.5%"></i></span><span class="val">41.0</span></li>
+                <li><span class="name">Ollama</span><span class="track"><i style="--w:67%"></i></span><span class="val">35.0</span></li>
+              </ul>
+            </div>
+            <div class="chart reveal d3">
+              <div class="chart-head">
+                <h3>OLMoE-1B-7B<sup>4</sup></h3>
+                <span class="unit">words per second*</span>
+              </div>
+              <ul class="bars">
+                <li class="us"><span class="name">MilliJoule</span><span class="track"><i style="--w:100%"></i></span><span class="val">99.8</span></li>
+                <li><span class="name">vllm-mlx</span><span class="track"><i style="--w:99.1%"></i></span><span class="val">98.9</span></li>
+                <li><span class="name">mlx-lm</span><span class="track"><i style="--w:92.7%"></i></span><span class="val">92.5</span></li>
+                <li><span class="name">LM Studio</span><span class="track"><i style="--w:92.3%"></i></span><span class="val">92.1</span></li>
+                <li><span class="name">llama.cpp</span><span class="track"><i style="--w:88.4%"></i></span><span class="val">88.2</span></li>
+                <li><span class="name">Ollama</span><span class="track"><i style="--w:87.8%"></i></span><span class="val">87.6</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -129,10 +185,11 @@
       <section class="section" style="padding:56px 0">
         <div class="wrap">
           <ol class="footnotes reveal">
-            <li class="plain">Apple M4 Mac (10-core GPU, 16 GB), macOS 27.3, November 2026. Qwen3.5-9B in 4-bit unless noted, 128 new tokens. Each engine was set up by us: mlx-lm 0.32.2, vllm-mlx 0.6.0, Ollama 0.40.16, llama.cpp build 12359. *Tokens per second; a token is roughly a word.</li>
-            <li>One chat request. MilliJoule, Ollama and vllm-mlx all use speculative decoding with the model's built-in draft layer; MilliJoule's output is identical to standard decoding. The gain depends on how predictable the text is.</li>
-            <li>Many users: 1.5× vllm-mlx at 8 requests, 1.7× at 16 and 1.15× at 32.</li>
-            <li>Qwen3.6-35B-A3B, 20 GB in 4-bit, streamed from the SSD. llama.cpp's best of three settings with experts on the CPU; it runs out of GPU memory by default.</li>
+            <li class="plain">Apple M4 Mac (10-core GPU, 16 GB), macOS 27.3, November 2026. 4-bit models, 128 new tokens. Each engine was set up by us: mlx-lm 0.32.2, vllm-mlx 0.6.0, Ollama 0.40.16, LM Studio 0.4.25, llama.cpp build 12359. *Tokens per second; a token is roughly a word.</li>
+            <li>Qwen3.5-9B, one chat request. MilliJoule, Ollama and vllm-mlx all use speculative decoding with the model's built-in draft layer; MilliJoule's output is identical to standard decoding. The gain depends on how predictable the text is.</li>
+            <li>Qwen3.5-9B, many users: 1.5× vllm-mlx at 8 requests, 1.7× at 16 and 1.15× at 32.</li>
+            <li>Qwen3.6-35B-A3B, 20 GB, streamed from the SSD. Writing: 128 tokens after a 2,048-token conversation. Reading: a 2,048-token prompt. llama.cpp with experts on the CPU, as it runs out of GPU memory by default.</li>
+            <li>128 tokens after a 2,048-token conversation, mean of 5–10 runs. gpt-oss-20b with 8-bit attention weights, the precision llama.cpp uses. On short conversations vllm-mlx leads on DeepSeek-V2-Lite and ties on OLMoE.</li>
           </ol>
         </div>
       </section>

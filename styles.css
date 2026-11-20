@@ -256,6 +256,11 @@ img { max-width: 100%; display: block; }
 .chart-pair .bars li { grid-template-columns: 1fr auto; gap: 5px 12px; }
 .chart-pair .bars .track { grid-column: 1 / -1; grid-row: 2; height: 10px; }
 @media (max-width: 960px) { .chart-pair { grid-template-columns: 1fr; } }
+.chart-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.chart-trio .chart + .chart { margin-top: 0; }
+.chart-trio .bars li { grid-template-columns: 1fr auto; gap: 5px 12px; }
+.chart-trio .bars .track { grid-column: 1 / -1; grid-row: 2; height: 10px; }
+@media (max-width: 1060px) { .chart-trio { grid-template-columns: 1fr; } }
 @media (max-width: 640px) {
   .chart { padding: 22px 18px 18px; }
   .bars li { grid-template-columns: 1fr auto; gap: 4px 12px; }
